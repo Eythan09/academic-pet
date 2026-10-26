@@ -172,6 +172,10 @@ def summary(text: str) -> None:
 
 def run(now: datetime | None = None) -> int:
     now = now or datetime.now(TZ)
+    if os.getenv("TEST_PUSH") == "true":
+        sent = send_push([{"title": PET_NAME, "body": "Тест: уведомления работают! Я на связи и сторожу твои дедлайны.", "tag": "test"}])
+        log.info("Тестовое уведомление: доставлено на %d устройств(а)", sent)
+        summary(f"🔔 Тестовое уведомление: доставлено {sent}")
     try:
         fetched = fetch_deadlines(os.getenv("ACADEMO_USERNAME", ""), os.getenv("ACADEMO_PASSWORD", ""), TZ)
     except AcademoError as e:

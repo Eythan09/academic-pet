@@ -9,6 +9,11 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      test_push:
+        description: "Отправить тестовое уведомление на все подписки"
+        type: boolean
+        default: false
 
 permissions:
   contents: write   # коммит deadlines.json
@@ -50,6 +55,7 @@ jobs:
           ACADEMO_PASSWORD: ${{ secrets.ACADEMO_PASSWORD }}
           VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
           PUSH_SUBSCRIPTIONS: ${{ secrets.PUSH_SUBSCRIPTIONS }}
+          TEST_PUSH: ${{ inputs.test_push }}
         run: python updater/update.py
 
       - name: Commit if something changed
