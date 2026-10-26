@@ -48,28 +48,36 @@ def test_merge_keeps_then_drops_after_two_days():
     assert merge(lst, fetched, NOW) == lst
 
 
+def test_merge_drops_task_submitted_before_due():
+    fetched = parse_items(API_ITEMS, TZ)
+    lst = merge([], fetched, NOW)
+    # «Тест ВСК 2» (до 08.11) сдали — Академо его убрал. Срок не прошёл → это сдача, удаляем сразу
+    rest = [f for f in fetched if f.id != "quiz-55"]
+    assert "quiz-55" not in {d["id"] for d in merge(lst, rest, NOW + timedelta(hours=1))}
+
+
 def test_notifications():
     fetched = parse_items(API_ITEMS, TZ)
     lst = merge([], fetched, NOW)
     ids = {f.id for f in fetched}
 
     # Первый запуск: ничего не шлём, всё запоминаем
-    new, soon, over, state = plan_notifications(lst, ids, None, NOW)
-    assert new == [] and soon == [] and over == [] and len(state["known"]) == 4
+    new, soon, urgent, over, state = plan_notifications(lst, ids, None, NOW)
+    assert new == soon == urgent == over == [] and len(state["known"]) == 4
 
     # Через час в окно 24 часов попадает только «семинар 9» (27.10 08:00)
-    new, soon, _, state = plan_notifications(lst, ids, state, NOW + timedelta(hours=1))
-    assert new == [] and [d["id"] for d in soon] == ["task-102"]
+    new, soon, urgent, _, state = plan_notifications(lst, ids, state, NOW + timedelta(hours=1))
+    assert new == [] and urgent == [] and [d["id"] for d in soon] == ["task-102"]
 
     # В полночь — и «СРС-1» (27.10 23:59); о семинаре повторно не напоминаем
-    _, soon2, _, state = plan_notifications(lst, ids, state, NOW + timedelta(hours=12))
+    _, soon2, _, _, state = plan_notifications(lst, ids, state, NOW + timedelta(hours=12))
     assert [d["id"] for d in soon2] == ["task-101"]
 
     # Появился новый дедлайн
     extra = parse_items([{"type": "task", "task_id": 200, "task_name": "Эссе", "course_id": 9,
                           "course_name": "Философия", "end_date": "2026-11-20 23:59:00"}], TZ)
     lst2 = merge(lst, fetched + extra, NOW)
-    new, soon, _, state = plan_notifications(lst2, ids | {"task-200"}, state, NOW + timedelta(hours=13))
+    new, soon, _, _, state = plan_notifications(lst2, ids | {"task-200"}, state, NOW + timedelta(hours=13))
     assert [d["title"] for d in new] == ["Эссе"] and soon == []
 
     msgs = build_messages(new, [], [], NOW)
@@ -77,28 +85,60 @@ def test_notifications():
     assert msgs[0]["body"].startswith("Эссе через ") and "последнюю ночь" in msgs[0]["body"]
 
 
-def test_overdue_only_if_still_listed_before_due():
+def test_urgent_repeats_until_submitted():
+    fetched = parse_items(API_ITEMS, TZ)
+    lst = merge([], fetched, NOW)
+    ids = {f.id for f in fetched}
+    *_, state = plan_notifications(lst, ids, None, NOW)
+    *_, state = plan_notifications(lst, ids, state, NOW + timedelta(hours=1))  # «за 24 ч» уже было
+
+    # «семинар 9» до 27.10 08:00. В 06:10 и в 06:40 — срочное напоминание каждый раз
+    t1 = NOW + timedelta(hours=18, minutes=10)
+    _, _, urgent, _, state = plan_notifications(lst, ids, state, t1)
+    assert [d["id"] for d in urgent] == ["task-102"]
+    _, _, urgent, _, state = plan_notifications(lst, ids, state, t1 + timedelta(minutes=30))
+    assert [d["id"] for d in urgent] == ["task-102"]
+
+    # Тексты чередуются и показывают точное время
+    m1 = build_messages([], [], [], t1, urgent)[0]
+    m2 = build_messages([], [], [], t1 + timedelta(minutes=30), urgent)[0]
+    assert m1["body"] != m2["body"] and m1["mood"] == "panic" and m1["renotify"]
+    assert "1 ч 50 мин" in m1["body"] and "1 ч 20 мин" in m2["body"]
+
+    # В 07:10 сдал — Академо убрал задание → напоминания прекращаются, «просрочено» не будет
+    gone = ids - {"task-102"}
+    lst = merge(lst, [f for f in fetched if f.id != "task-102"], t1 + timedelta(minutes=60))
+    _, _, urgent, _, state = plan_notifications(lst, gone, state, t1 + timedelta(minutes=60))
+    assert urgent == []
+    _, _, _, over, _ = plan_notifications(lst, gone, state, t1 + timedelta(hours=2, minutes=30))
+    assert over == []
+
+
+def test_overdue_only_if_seen_right_before_due():
     fetched = parse_items(API_ITEMS, TZ)
     lst = merge([], fetched, NOW)
     ids = {f.id for f in fetched}
     *_, state = plan_notifications(lst, ids, None, NOW)
 
-    # 27.10 07:00 — за час до срока «семинар 9» ещё в Академо → берём на заметку
-    *_, state = plan_notifications(lst, ids, state, NOW + timedelta(hours=19))
+    # 27.10 07:30 — за полчаса до срока «семинар 9» ещё в Академо
+    *_, state = plan_notifications(lst, ids, state, NOW + timedelta(hours=19, minutes=30))
     assert "task-102" in state["overdue_watch"]
 
-    # 27.10 08:30 — срок прошёл, Академо его уже не показывает → одно уведомление «просрочено»
-    later = NOW + timedelta(hours=20, minutes=30)
-    _, _, over, state = plan_notifications(lst, ids - {"task-102"}, state, later)
+    # 08:07 — срок прошёл, Академо его убрал (не сдан) → одно «просрочено», и задание остаётся в списке
+    later = NOW + timedelta(hours=20, minutes=7)
+    rest = [f for f in fetched if f.id != "task-102"]
+    lst = merge(lst, rest, later)
+    assert "task-102" in {d["id"] for d in lst}
+    _, _, _, over, state = plan_notifications(lst, ids - {"task-102"}, state, later)
     assert [d["id"] for d in over] == ["task-102"]
-    _, _, over2, state = plan_notifications(lst, ids - {"task-102"}, state, later + timedelta(minutes=30))
+    _, _, _, over2, state = plan_notifications(lst, ids - {"task-102"}, state, later + timedelta(minutes=30))
     assert over2 == []
 
-    # «СРС-1» сдан и исчез из Академо заранее (не виден в последние 2 часа) → «просрочено» не шлём
-    *_, state2 = plan_notifications(lst, ids, None, NOW)
-    gone = ids - {"task-101"}
-    *_, state2 = plan_notifications(lst, gone, state2, NOW + timedelta(hours=30))      # 27.10 18:00
-    _, _, over3, _ = plan_notifications(lst, gone, state2, NOW + timedelta(hours=36))  # 28.10 00:00
+    # Последний раз видели в 06:30 (за 1,5 часа), потом пропало → скорее всего сдали, «просрочено» не шлём
+    lst3 = merge([], fetched, NOW)
+    *_, s3 = plan_notifications(lst3, ids, None, NOW)
+    *_, s3 = plan_notifications(lst3, ids, s3, NOW + timedelta(hours=18, minutes=30))
+    _, _, _, over3, _ = plan_notifications(lst3, ids - {"task-102"}, s3, NOW + timedelta(hours=20, minutes=7))
     assert over3 == []
 
 

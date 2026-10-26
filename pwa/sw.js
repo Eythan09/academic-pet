@@ -44,6 +44,7 @@ self.addEventListener("push", (e) => {
   e.waitUntil(self.registration.showNotification(data.title || "Erudax", {
     body: data.body || "",
     tag: data.tag,
+    renotify: !!(data.renotify && data.tag), // повторное «срочно» снова звенит, а не тихо заменяет прошлое
     icon: `notify/${mood}.png`,
     badge: "notify/badge.png",
     data: { url: self.registration.scope },

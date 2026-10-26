@@ -25,9 +25,16 @@ log = logging.getLogger("updater")
 
 TZ = ZoneInfo(os.getenv("TZ_NAME", "Asia/Almaty"))
 KEEP_DAYS = 2
-REMIND_HOURS = 24
-OVERDUE_WATCH_HOURS = 2
+REMIND_HOURS = 24        # одно уведомление за сутки
+URGENT_HOURS = 2         # в последние 2 часа — напоминание каждый запуск (раз в 30 минут)
+LAST_SEEN_MINUTES = 60   # «просрочено», только если задание было в Академо за час до срока
 PET_NAME = "Erudax"
+URGENT_TEXTS = [
+    "ОСТАЛОСЬ {LEFT}! «{t}». Я уже грызу провода!!",
+    "«{t}» — до конца {left}. Я не шучу, садись СЕЙЧАС.",
+    "Тик-так… {left}. «{t}» само себя не сдаст!",
+    "Последний рывок! «{t}», осталось {left}. Я в тебя верю!",
+]
 DEADLINES_FILE = ROOT / "pwa" / "deadlines.json"
 STATE_FILE = ROOT / "data" / "state.json"
 
@@ -39,9 +46,16 @@ def expired(due_iso: str, now: datetime) -> bool:
 
 
 def merge(previous: list[dict], fetched: list[Deadline], now: datetime) -> list[dict]:
-    """Склеивает прошлый список и свежий из Академо. Академо обычно убирает дедлайн сразу
-    после срока, а мы держим его ещё KEEP_DAYS дней, потом удаляем."""
-    by_id = {d["id"]: d for d in previous}
+    """Склеивает прошлый список и свежий из Академо.
+
+    Академо убирает задание, когда его сдали, и после срока. Поэтому:
+    - пропало ДО срока → сдано, удаляем сразу;
+    - пропало ПОСЛЕ срока → держим ещё KEEP_DAYS дней как просроченное, потом удаляем."""
+    fetched_ids = {f.id for f in fetched}
+    by_id = {
+        d["id"]: d for d in previous
+        if d["id"] in fetched_ids or datetime.fromisoformat(d["due"]) <= now
+    }
     for f in fetched:
         by_id[f.id] = {
             "id": f.id,
@@ -55,46 +69,56 @@ def merge(previous: list[dict], fetched: list[Deadline], now: datetime) -> list[
 
 
 def plan_notifications(deadlines: list[dict], fetched_ids: set[str], state: dict | None, now: datetime):
-    """Решает, о чём уведомить. Возвращает (новые, за 24 часа, просроченные, новое состояние).
+    """Решает, о чём уведомить. Возвращает (новые, за 24 часа, срочные, просроченные, новое состояние).
     Первый запуск (state=None) ничего не шлёт — иначе прилетели бы все дедлайны разом.
 
-    «Просрочено» шлём один раз и только если задание ещё висело в Академо в последние
-    OVERDUE_WATCH_HOURS часов до срока: если Академо убирает сданные задания, о них не напомним."""
+    - «за 24 часа» — один раз;
+    - «срочно» — каждый запуск (раз в 30 минут) в последние URGENT_HOURS часа, пока задание
+      висит в Академо. Сдал — Академо его убрал — напоминания прекращаются;
+    - «просрочено» — один раз и только если задание было в Академо в последний запуск перед
+      сроком (не дальше LAST_SEEN_MINUTES): иначе, скорее всего, его сдали."""
     ids = {d["id"] for d in deadlines}
     due = {d["id"]: datetime.fromisoformat(d["due"]) for d in deadlines}
-    if state is None:
-        state = {"known": sorted(ids)}
-        first_run = True
-    else:
-        first_run = False
+    first_run = state is None
+    state = state or {}
 
-    known = set(state.get("known", []))
+    known = set(state.get("known", [])) if not first_run else set(ids)
     reminded = set(state.get("reminded", []))
-    watch = set(state.get("overdue_watch", []))
+    watch = state.get("overdue_watch", {})
+    if isinstance(watch, list):  # старый формат: просто список id
+        watch = {i: (due[i] - timedelta(minutes=1)).isoformat() for i in watch if i in due}
     overdue_sent = set(state.get("overdue_sent", []))
 
-    new = [] if first_run else [d for d in deadlines if d["id"] in fetched_ids and d["id"] not in known]
-    soon = [] if first_run else [
-        d for d in deadlines if d["id"] not in reminded and now < due[d["id"]] <= now + timedelta(hours=REMIND_HOURS)
-    ]
-    overdue = [] if first_run else [
-        d for d in deadlines if d["id"] in watch and d["id"] not in overdue_sent and due[d["id"]] <= now
-    ]
+    def live_within(hours: float):
+        return [d for d in deadlines if d["id"] in fetched_ids and now < due[d["id"]] <= now + timedelta(hours=hours)]
+
+    new, soon, urgent, overdue = [], [], [], []
+    if not first_run:
+        new = [d for d in deadlines if d["id"] in fetched_ids and d["id"] not in known]
+        soon = [d for d in deadlines if d["id"] not in reminded and now < due[d["id"]] <= now + timedelta(hours=REMIND_HOURS)]
+        soon_ids = {d["id"] for d in soon}
+        urgent = [d for d in live_within(URGENT_HOURS) if d["id"] not in soon_ids]
+        overdue = [
+            d for d in deadlines
+            if d["id"] in watch and d["id"] not in overdue_sent and due[d["id"]] <= now
+            and datetime.fromisoformat(watch[d["id"]]) >= due[d["id"]] - timedelta(minutes=LAST_SEEN_MINUTES)
+        ]
 
     known |= ids
     reminded |= {d["id"] for d in soon}
     overdue_sent |= {d["id"] for d in overdue}
-    watch -= {d["id"] for d in overdue}
-    watch |= {i for i in fetched_ids if i in due and now < due[i] <= now + timedelta(hours=OVERDUE_WATCH_HOURS)}
+    # Запоминаем, когда задание последний раз видели в Академо в последние часы перед сроком
+    for d in live_within(URGENT_HOURS):
+        watch[d["id"]] = now.isoformat(timespec="seconds")
 
-    # Не храним id удалённых дедлайнов
+    # Не храним id удалённых дедлайнов и уже отработанные «просрочено»
     new_state = {
         "known": sorted(known & ids),
         "reminded": sorted(reminded & ids),
-        "overdue_watch": sorted(watch & ids),
+        "overdue_watch": {i: t for i, t in sorted(watch.items()) if i in ids and i not in overdue_sent},
         "overdue_sent": sorted(overdue_sent & ids),
     }
-    return new, soon, overdue, new_state
+    return new, soon, urgent, overdue, new_state
 
 
 def fmt_left(due_iso: str, now: datetime) -> str:
@@ -110,7 +134,14 @@ def fmt_left(due_iso: str, now: datetime) -> str:
     return f"{d} д {r} ч" if r else f"{d} д"
 
 
-def build_messages(new: list[dict], soon: list[dict], overdue: list[dict], now: datetime) -> list[dict]:
+def urgent_left(due_iso: str, now: datetime) -> str:
+    """В последние 2 часа точнее: «1 ч 20 мин», «45 мин»."""
+    m = max(1, int((datetime.fromisoformat(due_iso) - now).total_seconds() // 60))
+    return f"{m // 60} ч {m % 60} мин" if m >= 60 else f"{m} мин"
+
+
+def build_messages(new: list[dict], soon: list[dict], overdue: list[dict], now: datetime,
+                   urgent: list[dict] | None = None) -> list[dict]:
     """Тексты от лица Erudax (DESIGN.md, раздел 6)."""
     msgs = []
     if new:
@@ -127,6 +158,17 @@ def build_messages(new: list[dict], soon: list[dict], overdue: list[dict], now: 
             "body": f"ОСТАЛОСЬ {left}. Я уже грызу провода. {d['title']}, СРОЧНО!!",
             "mood": "panic",
             "tag": "soon-" + d["id"],
+        })
+    for d in urgent or []:
+        left = urgent_left(d["due"], now)
+        minutes = int((datetime.fromisoformat(d["due"]) - now).total_seconds() // 60)
+        text = URGENT_TEXTS[(minutes // 30) % len(URGENT_TEXTS)]  # тексты чередуются от запуска к запуску
+        msgs.append({
+            "title": PET_NAME,
+            "body": text.format(t=d["title"], left=left, LEFT=left.upper()),
+            "mood": "panic",
+            "tag": "urgent-" + d["id"],
+            "renotify": True,
         })
     for d in overdue:
         msgs.append({
@@ -194,7 +236,7 @@ def run(now: datetime | None = None) -> int:
     prev_doc = read_json(DEADLINES_FILE) or {}
     prev_list = prev_doc.get("deadlines", [])
     deadlines = merge(prev_list, fetched, now)
-    new, soon, overdue, state = plan_notifications(deadlines, {f.id for f in fetched}, read_json(STATE_FILE), now)
+    new, soon, urgent, overdue, state = plan_notifications(deadlines, {f.id for f in fetched}, read_json(STATE_FILE), now)
 
     list_changed = deadlines != prev_list
     doc = {
@@ -206,14 +248,14 @@ def run(now: datetime | None = None) -> int:
     changed = write_if_changed(DEADLINES_FILE, doc)
     changed = write_if_changed(STATE_FILE, state) or changed
 
-    messages = build_messages(new, soon, overdue, now)
+    messages = build_messages(new, soon, overdue, now, urgent)
     sent = 0
     if messages:
         sent = send_push(messages)
 
-    log.info("✅ Дедлайнов в Академо: %d, в списке: %d, новых: %d, за 24 ч: %d, просрочено: %d, push доставлено: %d, файлы изменены: %s",
-             len(fetched), len(deadlines), len(new), len(soon), len(overdue), sent, changed)
-    summary(f"✅ Дедлайнов: {len(deadlines)} · новых: {len(new)} · за 24 ч: {len(soon)} · просрочено: {len(overdue)} · push: {sent} · изменения: {'да' if changed else 'нет'}")
+    log.info("✅ Дедлайнов в Академо: %d, в списке: %d, новых: %d, за 24 ч: %d, срочных: %d, просрочено: %d, push доставлено: %d, файлы изменены: %s",
+             len(fetched), len(deadlines), len(new), len(soon), len(urgent), len(overdue), sent, changed)
+    summary(f"✅ Дедлайнов: {len(deadlines)} · новых: {len(new)} · за 24 ч: {len(soon)} · срочных: {len(urgent)} · просрочено: {len(overdue)} · push: {sent} · изменения: {'да' if changed else 'нет'}")
     set_output("changed", "true" if changed else "false")
     return 0
 
