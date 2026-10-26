@@ -1,3 +1,4 @@
-# Linux-переводы строк для всего текста: Railway и GitHub Pages работают на Linux
+# Linux-переводы строк для всего текста: GitHub Actions и Pages работают на Linux
 * text=auto eol=lf
 *.png binary
+*.woff2 binary

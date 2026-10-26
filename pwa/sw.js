@@ -1,7 +1,8 @@
 // Оболочка приложения кэшируется для офлайна. deadlines.json не кэшируем: приложение хранит его само.
 // При изменении app.js/style.css подними ?v= здесь и в index.html, и версию CACHE.
-const CACHE = "academic-pet-v3";
-const SHELL = ["./", "index.html", "style.css?v=3", "config.js?v=3", "app.js?v=3",
+const CACHE = "erudax-v4";
+const SHELL = ["./", "index.html", "style.css?v=4", "config.js?v=4", "pet.js?v=4", "app.js?v=4",
+  "fonts/pixelify-sans-cyrillic.woff2", "fonts/pixelify-sans-latin.woff2",
   "manifest.webmanifest", "icon.svg", "icon-192.png", "icon-512.png"];
 
 self.addEventListener("install", (e) => {
@@ -37,7 +38,7 @@ self.addEventListener("fetch", (e) => {
 self.addEventListener("push", (e) => {
   let data = {};
   try { data = e.data ? e.data.json() : {}; } catch { data = { body: e.data && e.data.text() }; }
-  e.waitUntil(self.registration.showNotification(data.title || "Academic Pet", {
+  e.waitUntil(self.registration.showNotification(data.title || "Erudax", {
     body: data.body || "",
     tag: data.tag,
     icon: "icon-192.png",
