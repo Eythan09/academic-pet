@@ -107,8 +107,11 @@ def test_message_texts():
     soon = build_messages([], lst, [], NOW + timedelta(hours=12))[0]  # 27.10 00:00 → 23 ч 59 мин
     assert soon["title"] == "Erudax"
     assert soon["body"] == "ОСТАЛОСЬ 23 Ч. Я уже грызу провода. СРС-1, СРОЧНО!!"
+    assert soon["mood"] == "panic"
     over = build_messages([], [], lst, NOW + timedelta(days=2))[0]
     assert over["body"] == "СРС-1 просрочено… Я просто полежу в углу. Сдай хоть поздно, а?"
+    assert over["mood"] == "sad"
+    assert build_messages(lst, [], [], NOW)[0]["mood"] == "worried"
 
 
 def test_fmt_left():

@@ -119,18 +119,20 @@ def build_messages(new: list[dict], soon: list[dict], overdue: list[dict], now: 
         body = f"{t} через {left}. Начнёшь сегодня или опять в последнюю ночь?"
         if len(new) > 1:
             body = f"Новые дедлайны: {len(new)}. Ближайший — {body}"
-        msgs.append({"title": PET_NAME, "body": body, "tag": "new-" + "-".join(d["id"] for d in new[:3])})
+        msgs.append({"title": PET_NAME, "body": body, "mood": "worried", "tag": "new-" + "-".join(d["id"] for d in new[:3])})
     for d in soon:
         left = fmt_left(d["due"], now).upper()
         msgs.append({
             "title": PET_NAME,
             "body": f"ОСТАЛОСЬ {left}. Я уже грызу провода. {d['title']}, СРОЧНО!!",
+            "mood": "panic",
             "tag": "soon-" + d["id"],
         })
     for d in overdue:
         msgs.append({
             "title": PET_NAME,
             "body": f"{d['title']} просрочено… Я просто полежу в углу. Сдай хоть поздно, а?",
+            "mood": "sad",
             "tag": "overdue-" + d["id"],
         })
     return msgs
@@ -173,7 +175,7 @@ def summary(text: str) -> None:
 def run(now: datetime | None = None) -> int:
     now = now or datetime.now(TZ)
     if os.getenv("TEST_PUSH") == "true":
-        sent = send_push([{"title": PET_NAME, "body": "Тест: уведомления работают! Я на связи и сторожу твои дедлайны.", "tag": "test"}])
+        sent = send_push([{"title": PET_NAME, "body": "Тест: уведомления работают! Я на связи и сторожу твои дедлайны.", "mood": "done", "tag": "test"}])
         log.info("Тестовое уведомление: доставлено на %d устройств(а)", sent)
         summary(f"🔔 Тестовое уведомление: доставлено {sent}")
     try:
