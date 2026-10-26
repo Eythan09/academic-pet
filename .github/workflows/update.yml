@@ -4,7 +4,7 @@ name: Update deadlines
 
 on:
   schedule:
-    - cron: "*/30 * * * *"   # проверка дедлайнов
+    - cron: "7,37 * * * *"   # проверка дедлайнов; не ровно :00/:30 — в эти минуты GitHub чаще задерживает запуски
     - cron: "23 4 * * 1"     # keepalive, по понедельникам
   push:
     branches: [main]
