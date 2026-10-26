@@ -14,6 +14,10 @@ on:
         description: "Отправить тестовое уведомление на все подписки"
         type: boolean
         default: false
+      push_text:
+        description: "Или свой текст уведомления от Erudax (пусто — не отправлять)"
+        type: string
+        default: ""
 
 permissions:
   contents: write   # коммит deadlines.json
@@ -56,6 +60,7 @@ jobs:
           VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
           PUSH_SUBSCRIPTIONS: ${{ secrets.PUSH_SUBSCRIPTIONS }}
           TEST_PUSH: ${{ inputs.test_push }}
+          PUSH_TEXT: ${{ inputs.push_text }}
         run: python updater/update.py
 
       - name: Commit if something changed

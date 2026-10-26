@@ -178,6 +178,11 @@ def run(now: datetime | None = None) -> int:
         sent = send_push([{"title": PET_NAME, "body": "Тест: уведомления работают! Я на связи и сторожу твои дедлайны.", "mood": "done", "tag": "test"}])
         log.info("Тестовое уведомление: доставлено на %d устройств(а)", sent)
         summary(f"🔔 Тестовое уведомление: доставлено {sent}")
+    custom = os.getenv("PUSH_TEXT", "").strip()
+    if custom:
+        sent = send_push([{"title": PET_NAME, "body": custom[:300], "mood": "happy", "tag": "custom"}])
+        log.info("Своё уведомление: доставлено на %d устройств(а)", sent)
+        summary(f"💬 Своё уведомление: доставлено {sent}")
     try:
         fetched = fetch_deadlines(os.getenv("ACADEMO_USERNAME", ""), os.getenv("ACADEMO_PASSWORD", ""), TZ)
     except AcademoError as e:
