@@ -42,6 +42,8 @@ def send(subscriptions: list[dict], payload: dict, private_key: str, subject: st
                 vapid_private_key=private_key,
                 vapid_claims={"sub": subject},
                 ttl=24 * 3600,
+                # high: iOS и Android не откладывают уведомление при низком заряде и энергосбережении
+                headers={"Urgency": "high"},
             )
             ok += 1
         except WebPushException as e:
