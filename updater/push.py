@@ -12,7 +12,7 @@ log = logging.getLogger(__name__)
 
 
 def parse_subscriptions(raw: str) -> list[dict]:
-    raw = (raw or "").strip()
+    raw = (raw or "").replace("﻿", "").strip()  # BOM мог попасть при копировании
     if not raw:
         return []
     try:
