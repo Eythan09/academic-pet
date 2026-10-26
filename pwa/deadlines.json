@@ -1,0 +1,167 @@
+{
+  "updated_at": "2026-10-26T10:33:35+05:00",
+  "keep_days": 2,
+  "deadlines": [
+    {
+      "id": "task-47309",
+      "title": "СРС-1",
+      "course": "История Казахстана ЛС 1688",
+      "due": "2026-10-26T11:24:29+05:00",
+      "url": "https://uib.academo.kz/study/course/91382/answer-task/47309"
+    },
+    {
+      "id": "quiz-7409",
+      "title": "Тест 9",
+      "course": "Философия 26/27 5 semester",
+      "due": "2026-10-29T09:50:57+05:00",
+      "url": "https://uib.academo.kz/study/course/90789/test-info/7409"
+    },
+    {
+      "id": "task-48132",
+      "title": "Создание облачных ресурсов в AWS (Amazon RDS, DynamoDB, Amazon EFS)",
+      "course": "Основы облачных технологий AWS 26/27 5 semester",
+      "due": "2026-10-30T14:00:00+05:00",
+      "url": "https://uib.academo.kz/study/course/90834/answer-task/48132"
+    },
+    {
+      "id": "task-38274",
+      "title": "Познание и творчество.",
+      "course": "Философия 26/27 5 semester",
+      "due": "2026-10-31T09:00:24+05:00",
+      "url": "https://uib.academo.kz/study/course/90789/answer-task/38274"
+    },
+    {
+      "id": "quiz-7410",
+      "title": "Тест 10",
+      "course": "Философия 26/27 5 semester",
+      "due": "2026-11-05T09:51:57+05:00",
+      "url": "https://uib.academo.kz/study/course/90789/test-info/7410"
+    },
+    {
+      "id": "quiz-8900",
+      "title": "Тест ВСК 2",
+      "course": "История Казахстана ЛС 1688",
+      "due": "2026-11-05T21:48:41+05:00",
+      "url": "https://uib.academo.kz/study/course/91382/test-info/8900"
+    },
+    {
+      "id": "task-48118",
+      "title": "Set, List, Map",
+      "course": "Объектно-ориентированное программирование на языке JAVA 26/27 5 semester",
+      "due": "2026-11-06T10:26:23+05:00",
+      "url": "https://uib.academo.kz/study/course/90836/answer-task/48118"
+    },
+    {
+      "id": "task-47311",
+      "title": "семинар 9",
+      "course": "История Казахстана ЛС 1688",
+      "due": "2026-11-08T21:47:27+05:00",
+      "url": "https://uib.academo.kz/study/course/91382/answer-task/47311"
+    },
+    {
+      "id": "task-38282",
+      "title": "СРС 2",
+      "course": "Философия 26/27 5 semester",
+      "due": "2026-11-10T00:00:26+05:00",
+      "url": "https://uib.academo.kz/study/course/90789/answer-task/38282"
+    },
+    {
+      "id": "task-47312",
+      "title": "срс-2",
+      "course": "История Казахстана ЛС 1688",
+      "due": "2026-11-10T21:50:51+05:00",
+      "url": "https://uib.academo.kz/study/course/91382/answer-task/47312"
+    },
+    {
+      "id": "quiz-7411",
+      "title": "Тест 11",
+      "course": "Философия 26/27 5 semester",
+      "due": "2026-11-12T09:50:17+05:00",
+      "url": "https://uib.academo.kz/study/course/90789/test-info/7411"
+    },
+    {
+      "id": "task-38283",
+      "title": "СРСП (РОС) 2",
+      "course": "Философия 26/27 5 semester",
+      "due": "2026-11-17T00:00:39+05:00",
+      "url": "https://uib.academo.kz/study/course/90789/answer-task/38283"
+    },
+    {
+      "id": "quiz-7412",
+      "title": "Тест 12",
+      "course": "Философия 26/27 5 semester",
+      "due": "2026-11-19T09:50:06+05:00",
+      "url": "https://uib.academo.kz/study/course/90789/test-info/7412"
+    },
+    {
+      "id": "quiz-7413",
+      "title": "Тест 13",
+      "course": "Философия 26/27 5 semester",
+      "due": "2026-11-26T09:50:42+05:00",
+      "url": "https://uib.academo.kz/study/course/90789/test-info/7413"
+    },
+    {
+      "id": "task-38279",
+      "title": "Этика. Философия ценностей.",
+      "course": "Философия 26/27 5 semester",
+      "due": "2026-11-30T12:39:43+05:00",
+      "url": "https://uib.academo.kz/study/course/90789/answer-task/38279"
+    },
+    {
+      "id": "task-38277",
+      "title": "Человек.",
+      "course": "Философия 26/27 5 semester",
+      "due": "2026-11-30T18:30:38+05:00",
+      "url": "https://uib.academo.kz/study/course/90789/answer-task/38277"
+    },
+    {
+      "id": "task-38278",
+      "title": "Жизнь и смерть. Смысл жизни.",
+      "course": "Философия 26/27 5 semester",
+      "due": "2026-11-30T18:34:51+05:00",
+      "url": "https://uib.academo.kz/study/course/90789/answer-task/38278"
+    },
+    {
+      "id": "task-38280",
+      "title": "Философия свободы.",
+      "course": "Философия 26/27 5 semester",
+      "due": "2026-11-30T18:43:19+05:00",
+      "url": "https://uib.academo.kz/study/course/90789/answer-task/38280"
+    },
+    {
+      "id": "task-38281",
+      "title": "Эстетика. Учение о красоте и искусстве.",
+      "course": "Философия 26/27 5 semester",
+      "due": "2026-11-30T18:46:56+05:00",
+      "url": "https://uib.academo.kz/study/course/90789/answer-task/38281"
+    },
+    {
+      "id": "task-38284",
+      "title": "Философское осмысление общества, истории и политики.",
+      "course": "Философия 26/27 5 semester",
+      "due": "2026-11-30T18:57:39+05:00",
+      "url": "https://uib.academo.kz/study/course/90789/answer-task/38284"
+    },
+    {
+      "id": "quiz-7414",
+      "title": "Тест 14",
+      "course": "Философия 26/27 5 semester",
+      "due": "2026-12-03T09:50:22+05:00",
+      "url": "https://uib.academo.kz/study/course/90789/test-info/7414"
+    },
+    {
+      "id": "task-38285",
+      "title": "Философия религии.",
+      "course": "Философия 26/27 5 semester",
+      "due": "2026-12-10T19:01:28+05:00",
+      "url": "https://uib.academo.kz/study/course/90789/answer-task/38285"
+    },
+    {
+      "id": "task-38286",
+      "title": "Философия сегодня: Современные вызовы",
+      "course": "Философия 26/27 5 semester",
+      "due": "2026-12-15T17:32:50+05:00",
+      "url": "https://uib.academo.kz/study/course/90789/answer-task/38286"
+    }
+  ]
+}

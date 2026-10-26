@@ -1,0 +1,21 @@
+# Секреты: пароль Академо, VAPID-ключи. Всё это хранится в GitHub Secrets
+.env
+.env.*
+!.env.example
+secrets-to-copy.txt
+*.pem
+*.key
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+
+# Прочее
+*.log
+.claude/
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store

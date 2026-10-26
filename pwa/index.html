@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Academic Pet</title>
+  <meta name="description" content="Питомец, который живёт твоими дедлайнами на Академо">
+  <meta name="theme-color" content="#f6f1e7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1b1a17" media="(prefers-color-scheme: dark)">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="stylesheet" href="style.css?v=3">
+</head>
+<body>
+  <header class="top">
+    <h1>Academic Pet</h1>
+    <div class="top-actions">
+      <button id="refreshBtn" class="btn" type="button" title="Перечитать список дедлайнов">
+        <span class="spin" aria-hidden="true">↻</span> Обновить
+      </button>
+      <button id="settingsBtn" class="btn ghost" type="button" aria-label="Настройки">⚙</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="pet-card" aria-label="Питомец">
+      <div class="bubble" id="bubble">Привет!</div>
+      <div class="pet" id="pet" data-mood="happy">
+        <svg viewBox="0 0 200 200" role="img" aria-labelledby="petTitle">
+          <title id="petTitle">Питомец</title>
+          <ellipse class="shadow" cx="100" cy="182" rx="52" ry="8"/>
+          <g class="body-group">
+            <path class="antenna" d="M100 46 Q96 26 108 16"/>
+            <circle class="antenna-tip" cx="109" cy="15" r="7"/>
+            <path class="body" d="M100 44 C150 44 172 84 170 124 C168 162 138 176 100 176 C62 176 32 162 30 124 C28 84 50 44 100 44 Z"/>
+            <ellipse class="belly" cx="100" cy="138" rx="40" ry="28"/>
+            <g class="eyes">
+              <g class="eye eye-l"><ellipse cx="76" cy="100" rx="10" ry="13"/><circle class="glint" cx="79" cy="95" r="3.5"/></g>
+              <g class="eye eye-r"><ellipse cx="124" cy="100" rx="10" ry="13"/><circle class="glint" cx="127" cy="95" r="3.5"/></g>
+              <path class="eye-x eye-l" d="M68 92 L84 108 M84 92 L68 108"/>
+              <path class="eye-x eye-r" d="M116 92 L132 108 M132 92 L116 108"/>
+              <path class="eye-closed" d="M66 102 Q76 110 86 102 M114 102 Q124 110 134 102"/>
+            </g>
+            <ellipse class="cheek" cx="60" cy="120" rx="9" ry="5"/>
+            <ellipse class="cheek" cx="140" cy="120" rx="9" ry="5"/>
+            <path class="mouth" id="mouth" d="M86 122 Q100 136 114 122"/>
+            <path class="sweat" d="M152 78 Q158 90 152 94 Q146 90 152 78 Z"/>
+          </g>
+        </svg>
+      </div>
+      <div class="pet-info">
+        <div class="pet-name" id="petName">Пиксель</div>
+        <div class="stat">
+          <span>Уровень <b id="level">1</b></span>
+          <div class="bar" aria-hidden="true"><div class="bar-fill" id="xpBar"></div></div>
+        </div>
+        <div class="stat">
+          <span>Настроение</span>
+          <div class="bar" aria-hidden="true"><div class="bar-fill mood-fill" id="moodBar"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="list-card" aria-label="Дедлайны">
+      <div class="list-head">
+        <h2>Дедлайны</h2>
+        <span class="meta" id="meta"></span>
+      </div>
+      <div class="notice" id="notice" hidden></div>
+      <ul class="deadlines" id="list"></ul>
+      <p class="empty" id="empty" hidden>Дедлайнов нет. Питомец спит спокойно.</p>
+    </section>
+  </main>
+
+  <dialog id="settings">
+    <form method="dialog" class="settings-form">
+      <h2>Настройки</h2>
+      <label>Имя питомца
+        <input id="petNameInput" type="text" maxlength="20">
+      </label>
+
+      <fieldset class="push-box">
+        <legend>Уведомления</legend>
+        <p class="hint" id="pushStatus">Проверяю…</p>
+        <button class="btn" type="button" id="pushBtn" hidden>Включить уведомления</button>
+        <div id="subBox" hidden>
+          <p class="hint">Скопируй этот текст и вставь его в секрет <b>PUSH_SUBSCRIPTIONS</b>
+            на GitHub (Settings → Secrets and variables → Actions). Для нескольких устройств вставляй
+            каждую подписку с новой строки.</p>
+          <textarea id="subText" rows="4" readonly></textarea>
+          <button class="btn ghost" type="button" id="copySub">Скопировать</button>
+        </div>
+      </fieldset>
+
+      <div class="dialog-actions">
+        <button class="btn ghost" value="cancel" type="submit">Отмена</button>
+        <button class="btn" value="save" type="submit">Сохранить</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <span id="toastText"></span>
+    <button type="button" id="toastAction" hidden></button>
+  </div>
+  <script src="config.js?v=3"></script>
+  <script src="app.js?v=3"></script>
+</body>
+</html>
