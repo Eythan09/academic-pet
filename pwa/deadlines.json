@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-27T10:06:23+05:00",
+  "updated_at": "2026-10-27T23:39:20+05:00",
   "keep_days": 2,
   "deadlines": [
     {
@@ -43,6 +43,13 @@
       "course": "Философия 26/27 5 semester",
       "due": "2026-11-05T09:51:57+05:00",
       "url": "https://uib.academo.kz/study/course/90789/test-info/7410"
+    },
+    {
+      "id": "quiz-8898",
+      "title": "тест к лекции 6",
+      "course": "История Казахстана ЛС 1688",
+      "due": "2026-11-05T10:10:29+05:00",
+      "url": "https://uib.academo.kz/study/course/91382/test-info/8898"
     },
     {
       "id": "quiz-8900",
