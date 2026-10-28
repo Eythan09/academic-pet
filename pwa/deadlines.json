@@ -1,14 +1,7 @@
 {
-  "updated_at": "2026-10-28T00:37:59+05:00",
+  "updated_at": "2026-10-28T11:43:56+05:00",
   "keep_days": 2,
   "deadlines": [
-    {
-      "id": "task-47309",
-      "title": "СРС-1",
-      "course": "История Казахстана ЛС 1688",
-      "due": "2026-10-26T11:24:29+05:00",
-      "url": "https://uib.academo.kz/study/course/91382/answer-task/47309"
-    },
     {
       "id": "quiz-7409",
       "title": "Тест 9",
