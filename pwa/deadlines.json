@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-28T11:43:56+05:00",
+  "updated_at": "2026-10-28T12:53:49+05:00",
   "keep_days": 2,
   "deadlines": [
     {
@@ -87,6 +87,13 @@
       "url": "https://uib.academo.kz/study/course/91382/answer-task/47312"
     },
     {
+      "id": "task-48813",
+      "title": "СРСП",
+      "course": "Базы данных и системы управления базами данных 26/27 5 semester",
+      "due": "2026-11-11T12:17:33+05:00",
+      "url": "https://uib.academo.kz/study/course/90833/answer-task/48813"
+    },
+    {
       "id": "quiz-7411",
       "title": "Тест 11",
       "course": "Философия 26/27 5 semester",
@@ -106,6 +113,13 @@
       "course": "Философия 26/27 5 semester",
       "due": "2026-11-17T00:00:39+05:00",
       "url": "https://uib.academo.kz/study/course/90789/answer-task/38283"
+    },
+    {
+      "id": "task-48814",
+      "title": "СРС",
+      "course": "Базы данных и системы управления базами данных 26/27 5 semester",
+      "due": "2026-11-18T12:18:39+05:00",
+      "url": "https://uib.academo.kz/study/course/90833/answer-task/48814"
     },
     {
       "id": "quiz-7412",
