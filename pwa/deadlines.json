@@ -1,14 +1,7 @@
 {
-  "updated_at": "2026-10-28T12:53:49+05:00",
+  "updated_at": "2026-10-29T09:42:40+05:00",
   "keep_days": 2,
   "deadlines": [
-    {
-      "id": "quiz-7409",
-      "title": "Тест 9",
-      "course": "Философия 26/27 5 semester",
-      "due": "2026-10-29T09:50:57+05:00",
-      "url": "https://uib.academo.kz/study/course/90789/test-info/7409"
-    },
     {
       "id": "task-48132",
       "title": "Создание облачных ресурсов в AWS (Amazon RDS, DynamoDB, Amazon EFS)",
