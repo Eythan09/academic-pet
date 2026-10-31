@@ -32,10 +32,9 @@
     "task-38274",
     "task-48132"
   ],
-  "overdue_watch": {
-    "task-38274": "2026-10-31T08:16:07+05:00"
-  },
+  "overdue_watch": {},
   "overdue_sent": [
+    "task-38274",
     "task-48132"
   ]
 }
