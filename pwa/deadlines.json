@@ -1,14 +1,7 @@
 {
-  "updated_at": "2026-10-29T09:42:40+05:00",
+  "updated_at": "2026-11-01T14:39:45+05:00",
   "keep_days": 2,
   "deadlines": [
-    {
-      "id": "task-48132",
-      "title": "Создание облачных ресурсов в AWS (Amazon RDS, DynamoDB, Amazon EFS)",
-      "course": "Основы облачных технологий AWS 26/27 5 semester",
-      "due": "2026-10-30T14:00:00+05:00",
-      "url": "https://uib.academo.kz/study/course/90834/answer-task/48132"
-    },
     {
       "id": "task-38274",
       "title": "Познание и творчество.",
