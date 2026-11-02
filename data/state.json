@@ -9,7 +9,6 @@
     "quiz-8899",
     "quiz-8900",
     "quiz-8901",
-    "task-38274",
     "task-38277",
     "task-38278",
     "task-38279",
@@ -27,11 +26,7 @@
     "task-48813",
     "task-48814"
   ],
-  "reminded": [
-    "task-38274"
-  ],
+  "reminded": [],
   "overdue_watch": {},
-  "overdue_sent": [
-    "task-38274"
-  ]
+  "overdue_sent": []
 }
