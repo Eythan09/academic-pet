@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-03T10:50:11+05:00",
+  "updated_at": "2026-11-03T14:21:28+05:00",
   "keep_days": 2,
   "deadlines": [
     {
@@ -162,6 +162,20 @@
       "course": "Философия 26/27 5 semester",
       "due": "2026-12-03T09:50:22+05:00",
       "url": "https://uib.academo.kz/study/course/90789/test-info/7414"
+    },
+    {
+      "id": "task-49664",
+      "title": "Самостоятельная работа студента 2",
+      "course": "Введение в машинное обучение 26/27 5 semester",
+      "due": "2026-12-06T21:00:00+05:00",
+      "url": "https://uib.academo.kz/study/course/90832/answer-task/49664"
+    },
+    {
+      "id": "task-49667",
+      "title": "Выполнение заданий по ROS2",
+      "course": "Введение в машинное обучение 26/27 5 semester",
+      "due": "2026-12-06T21:11:00+05:00",
+      "url": "https://uib.academo.kz/study/course/90832/answer-task/49667"
     },
     {
       "id": "task-38285",
