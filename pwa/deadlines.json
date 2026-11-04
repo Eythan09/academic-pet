@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-03T14:21:28+05:00",
+  "updated_at": "2026-11-04T23:20:52+05:00",
   "keep_days": 2,
   "deadlines": [
     {
@@ -36,13 +36,6 @@
       "course": "История Казахстана ЛС 1688",
       "due": "2026-11-05T21:48:41+05:00",
       "url": "https://uib.academo.kz/study/course/91382/test-info/8900"
-    },
-    {
-      "id": "task-47311",
-      "title": "семинар 9",
-      "course": "История Казахстана ЛС 1688",
-      "due": "2026-11-08T21:47:27+05:00",
-      "url": "https://uib.academo.kz/study/course/91382/answer-task/47311"
     },
     {
       "id": "task-38282",
@@ -85,6 +78,13 @@
       "course": "История Казахстана ЛС 1688",
       "due": "2026-11-12T10:10:28+05:00",
       "url": "https://uib.academo.kz/study/course/91382/test-info/8901"
+    },
+    {
+      "id": "task-47311",
+      "title": "семинар 9",
+      "course": "История Казахстана ЛС 1688",
+      "due": "2026-11-15T21:47:27+05:00",
+      "url": "https://uib.academo.kz/study/course/91382/answer-task/47311"
     },
     {
       "id": "task-38283",
