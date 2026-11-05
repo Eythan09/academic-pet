@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-05T10:55:53+05:00",
+  "updated_at": "2026-11-05T16:26:22+05:00",
   "keep_days": 2,
   "deadlines": [
     {
@@ -22,6 +22,20 @@
       "course": "История Казахстана ЛС 1688",
       "due": "2026-11-05T10:25:49+05:00",
       "url": "https://uib.academo.kz/study/course/91382/test-info/8899"
+    },
+    {
+      "id": "quiz-9368",
+      "title": "Тест 10",
+      "course": "Основы облачных технологий AWS 26/27 5 semester",
+      "due": "2026-11-06T14:00:00+05:00",
+      "url": "https://uib.academo.kz/study/course/90834/test-info/9368"
+    },
+    {
+      "id": "quiz-9365",
+      "title": "Тест 9",
+      "course": "Основы облачных технологий AWS 26/27 5 semester",
+      "due": "2026-11-06T14:00:00+05:00",
+      "url": "https://uib.academo.kz/study/course/90834/test-info/9365"
     },
     {
       "id": "task-38282",
