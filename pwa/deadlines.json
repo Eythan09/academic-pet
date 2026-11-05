@@ -1,14 +1,7 @@
 {
-  "updated_at": "2026-11-05T09:54:44+05:00",
+  "updated_at": "2026-11-05T10:55:53+05:00",
   "keep_days": 2,
   "deadlines": [
-    {
-      "id": "task-48544",
-      "title": "Thread",
-      "course": "Объектно-ориентированное программирование на языке JAVA 26/27 5 semester",
-      "due": "2026-11-03T10:31:38+05:00",
-      "url": "https://uib.academo.kz/study/course/90836/answer-task/48544"
-    },
     {
       "id": "quiz-7410",
       "title": "Тест 10",
