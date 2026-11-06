@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-06T09:53:43+05:00",
+  "updated_at": "2026-11-06T10:54:22+05:00",
   "keep_days": 2,
   "deadlines": [
     {
@@ -22,6 +22,13 @@
       "course": "История Казахстана ЛС 1688",
       "due": "2026-11-05T10:25:49+05:00",
       "url": "https://uib.academo.kz/study/course/91382/test-info/8899"
+    },
+    {
+      "id": "task-49986",
+      "title": "Создание Docker контейнеров в AWS (AWS ECS)",
+      "course": "Основы облачных технологий AWS 26/27 5 semester",
+      "due": "2026-11-06T23:59:59+05:00",
+      "url": "https://uib.academo.kz/study/course/90834/answer-task/49986"
     },
     {
       "id": "task-38282",
