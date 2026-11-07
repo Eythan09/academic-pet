@@ -1,28 +1,7 @@
 {
-  "updated_at": "2026-11-06T12:05:35+05:00",
+  "updated_at": "2026-11-07T10:43:48+05:00",
   "keep_days": 2,
   "deadlines": [
-    {
-      "id": "quiz-7410",
-      "title": "Тест 10",
-      "course": "Философия 26/27 5 semester",
-      "due": "2026-11-05T09:51:57+05:00",
-      "url": "https://uib.academo.kz/study/course/90789/test-info/7410"
-    },
-    {
-      "id": "quiz-8898",
-      "title": "тест к лекции 6",
-      "course": "История Казахстана ЛС 1688",
-      "due": "2026-11-05T10:10:29+05:00",
-      "url": "https://uib.academo.kz/study/course/91382/test-info/8898"
-    },
-    {
-      "id": "quiz-8899",
-      "title": "Тест ВСК 1",
-      "course": "История Казахстана ЛС 1688",
-      "due": "2026-11-05T10:25:49+05:00",
-      "url": "https://uib.academo.kz/study/course/91382/test-info/8899"
-    },
     {
       "id": "task-38282",
       "title": "СРС 2",
