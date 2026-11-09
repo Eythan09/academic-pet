@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-09T22:30:27+05:00",
+  "updated_at": "2026-11-10T02:22:52+05:00",
   "keep_days": 2,
   "deadlines": [
     {
@@ -43,6 +43,13 @@
       "course": "Философия 26/27 5 semester",
       "due": "2026-11-17T00:00:39+05:00",
       "url": "https://uib.academo.kz/study/course/90789/answer-task/38283"
+    },
+    {
+      "id": "task-50439",
+      "title": "CRUD",
+      "course": "Объектно-ориентированное программирование на языке JAVA 26/27 5 semester",
+      "due": "2026-11-17T09:00:30+05:00",
+      "url": "https://uib.academo.kz/study/course/90836/answer-task/50439"
     },
     {
       "id": "task-48814",
