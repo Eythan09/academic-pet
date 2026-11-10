@@ -1,21 +1,7 @@
 {
-  "updated_at": "2026-11-10T02:22:52+05:00",
+  "updated_at": "2026-11-10T20:44:39+05:00",
   "keep_days": 2,
   "deadlines": [
-    {
-      "id": "task-47312",
-      "title": "срс-2",
-      "course": "История Казахстана ЛС 1688",
-      "due": "2026-11-10T21:50:51+05:00",
-      "url": "https://uib.academo.kz/study/course/91382/answer-task/47312"
-    },
-    {
-      "id": "task-48813",
-      "title": "СРСП",
-      "course": "Базы данных и системы управления базами данных 26/27 5 semester",
-      "due": "2026-11-11T12:17:33+05:00",
-      "url": "https://uib.academo.kz/study/course/90833/answer-task/48813"
-    },
     {
       "id": "quiz-7411",
       "title": "Тест 11",

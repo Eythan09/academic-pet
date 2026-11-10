@@ -21,19 +21,12 @@
     "task-38285",
     "task-38286",
     "task-47311",
-    "task-47312",
-    "task-48813",
     "task-48814",
     "task-49664",
     "task-49667",
     "task-50439"
   ],
-  "reminded": [
-    "task-47312",
-    "task-48813"
-  ],
-  "overdue_watch": {
-    "task-47312": "2026-11-10T19:51:45+05:00"
-  },
+  "reminded": [],
+  "overdue_watch": {},
   "overdue_sent": []
 }
