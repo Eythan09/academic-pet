@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-10T20:44:39+05:00",
+  "updated_at": "2026-11-13T01:45:42+05:00",
   "keep_days": 2,
   "deadlines": [
     {
@@ -22,6 +22,13 @@
       "course": "История Казахстана ЛС 1688",
       "due": "2026-11-15T21:47:27+05:00",
       "url": "https://uib.academo.kz/study/course/91382/answer-task/47311"
+    },
+    {
+      "id": "task-51105",
+      "title": "Amazon ECR и ECS Service",
+      "course": "Основы облачных технологий AWS 26/27 5 semester",
+      "due": "2026-11-15T23:59:59+05:00",
+      "url": "https://uib.academo.kz/study/course/90834/answer-task/51105"
     },
     {
       "id": "task-38283",
