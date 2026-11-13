@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-13T08:49:38+05:00",
+  "updated_at": "2026-11-13T10:56:01+05:00",
   "keep_days": 2,
   "deadlines": [
     {
@@ -8,13 +8,6 @@
       "course": "Философия 26/27 5 semester",
       "due": "2026-11-12T09:50:17+05:00",
       "url": "https://uib.academo.kz/study/course/90789/test-info/7411"
-    },
-    {
-      "id": "quiz-9526",
-      "title": "Тест 11",
-      "course": "Основы облачных технологий AWS 26/27 5 semester",
-      "due": "2026-11-13T14:00:00+05:00",
-      "url": "https://uib.academo.kz/study/course/90834/test-info/9526"
     },
     {
       "id": "task-47311",

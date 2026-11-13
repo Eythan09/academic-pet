@@ -5,7 +5,6 @@
     "quiz-7413",
     "quiz-7414",
     "quiz-8901",
-    "quiz-9526",
     "task-38269",
     "task-38270",
     "task-38271",
@@ -30,8 +29,7 @@
   ],
   "reminded": [
     "quiz-7411",
-    "quiz-8901",
-    "quiz-9526"
+    "quiz-8901"
   ],
   "overdue_watch": {},
   "overdue_sent": [
