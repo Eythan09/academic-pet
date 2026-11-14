@@ -1,14 +1,7 @@
 {
-  "updated_at": "2026-11-13T10:56:01+05:00",
+  "updated_at": "2026-11-14T10:46:27+05:00",
   "keep_days": 2,
   "deadlines": [
-    {
-      "id": "quiz-7411",
-      "title": "Тест 11",
-      "course": "Философия 26/27 5 semester",
-      "due": "2026-11-12T09:50:17+05:00",
-      "url": "https://uib.academo.kz/study/course/90789/test-info/7411"
-    },
     {
       "id": "task-47311",
       "title": "семинар 9",
