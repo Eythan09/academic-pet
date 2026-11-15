@@ -19,7 +19,6 @@
     "task-38284",
     "task-38285",
     "task-38286",
-    "task-47311",
     "task-48814",
     "task-49664",
     "task-49667",
@@ -28,12 +27,9 @@
   ],
   "reminded": [
     "quiz-8901",
-    "task-47311",
     "task-51105"
   ],
-  "overdue_watch": {
-    "task-47311": "2026-11-15T20:13:03+05:00"
-  },
+  "overdue_watch": {},
   "overdue_sent": [
     "quiz-8901"
   ]

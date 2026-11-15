@@ -1,14 +1,7 @@
 {
-  "updated_at": "2026-11-14T10:46:27+05:00",
+  "updated_at": "2026-11-15T21:11:48+05:00",
   "keep_days": 2,
   "deadlines": [
-    {
-      "id": "task-47311",
-      "title": "семинар 9",
-      "course": "История Казахстана ЛС 1688",
-      "due": "2026-11-15T21:47:27+05:00",
-      "url": "https://uib.academo.kz/study/course/91382/answer-task/47311"
-    },
     {
       "id": "task-51105",
       "title": "Amazon ECR и ECS Service",
