@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-19T22:27:43+05:00",
+  "updated_at": "2026-11-20T09:56:41+05:00",
   "keep_days": 2,
   "deadlines": [
     {
@@ -29,6 +29,20 @@
       "course": "Основы облачных технологий AWS 26/27 5 semester",
       "due": "2026-11-20T14:00:00+05:00",
       "url": "https://uib.academo.kz/study/course/90834/test-info/9648"
+    },
+    {
+      "id": "task-52007",
+      "title": "AWS Cloud Quest: Cloud Practitioner. Auto-Healing and Scaling Applications. Задание 10",
+      "course": "Основы облачных технологий AWS 26/27 5 semester",
+      "due": "2026-11-20T23:59:59+05:00",
+      "url": "https://uib.academo.kz/study/course/90834/answer-task/52007"
+    },
+    {
+      "id": "task-52009",
+      "title": "AWS Cloud Quest: Cloud Practitioner. Highly Available Web Applications. Задание 11",
+      "course": "Основы облачных технологий AWS 26/27 5 semester",
+      "due": "2026-11-20T23:59:59+05:00",
+      "url": "https://uib.academo.kz/study/course/90834/answer-task/52009"
     },
     {
       "id": "task-38269",
