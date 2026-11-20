@@ -1,14 +1,7 @@
 {
-  "updated_at": "2026-11-20T10:58:27+05:00",
+  "updated_at": "2026-11-20T13:39:11+05:00",
   "keep_days": 2,
   "deadlines": [
-    {
-      "id": "task-48814",
-      "title": "СРС",
-      "course": "Базы данных и системы управления базами данных 26/27 5 semester",
-      "due": "2026-11-18T12:18:39+05:00",
-      "url": "https://uib.academo.kz/study/course/90833/answer-task/48814"
-    },
     {
       "id": "quiz-7412",
       "title": "Тест 12",
