@@ -3,7 +3,6 @@
     "quiz-7412",
     "quiz-7413",
     "quiz-7414",
-    "quiz-9648",
     "task-38269",
     "task-38270",
     "task-38271",
@@ -27,17 +26,15 @@
   ],
   "reminded": [
     "quiz-7412",
-    "quiz-9648",
     "task-38276",
     "task-48814",
     "task-52007",
     "task-52009"
   ],
-  "overdue_watch": {
-    "task-38276": "2026-11-20T09:56:41+05:00"
-  },
+  "overdue_watch": {},
   "overdue_sent": [
     "quiz-7412",
+    "task-38276",
     "task-48814"
   ]
 }
