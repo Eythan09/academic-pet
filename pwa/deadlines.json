@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-22T10:53:37+05:00",
+  "updated_at": "2026-11-22T18:31:34+05:00",
   "keep_days": 2,
   "deadlines": [
     {
@@ -99,6 +99,13 @@
       "course": "Философия 26/27 5 semester",
       "due": "2026-12-03T09:50:22+05:00",
       "url": "https://uib.academo.kz/study/course/90789/test-info/7414"
+    },
+    {
+      "id": "task-52212",
+      "title": "Средний балл практических занятий",
+      "course": "Введение в машинное обучение 26/27 5 semester",
+      "due": "2026-12-04T22:00:00+05:00",
+      "url": "https://uib.academo.kz/study/course/90832/answer-task/52212"
     },
     {
       "id": "task-49664",
