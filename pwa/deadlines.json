@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-22T18:31:34+05:00",
+  "updated_at": "2026-11-23T13:32:25+05:00",
   "keep_days": 2,
   "deadlines": [
     {
@@ -36,6 +36,20 @@
       "course": "Философия 26/27 5 semester",
       "due": "2026-11-30T09:00:24+05:00",
       "url": "https://uib.academo.kz/study/course/90789/answer-task/38274"
+    },
+    {
+      "id": "task-52315",
+      "title": "Вопросы по лекциям ВСК 2",
+      "course": "Базы данных и системы управления базами данных 26/27 5 semester",
+      "due": "2026-11-30T12:33:00+05:00",
+      "url": "https://uib.academo.kz/study/course/90833/answer-task/52315"
+    },
+    {
+      "id": "task-52316",
+      "title": "ROS по проекту",
+      "course": "Базы данных и системы управления базами данных 26/27 5 semester",
+      "due": "2026-11-30T12:34:21+05:00",
+      "url": "https://uib.academo.kz/study/course/90833/answer-task/52316"
     },
     {
       "id": "task-38279",
@@ -120,6 +134,13 @@
       "course": "Введение в машинное обучение 26/27 5 semester",
       "due": "2026-12-06T21:11:00+05:00",
       "url": "https://uib.academo.kz/study/course/90832/answer-task/49667"
+    },
+    {
+      "id": "task-52317",
+      "title": "Контрольный срез знаний по материалам ВСК2",
+      "course": "Базы данных и системы управления базами данных 26/27 5 semester",
+      "due": "2026-12-07T12:35:09+05:00",
+      "url": "https://uib.academo.kz/study/course/90833/answer-task/52317"
     },
     {
       "id": "task-38285",
