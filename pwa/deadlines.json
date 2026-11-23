@@ -1,14 +1,7 @@
 {
-  "updated_at": "2026-11-23T13:32:25+05:00",
+  "updated_at": "2026-11-23T19:39:55+05:00",
   "keep_days": 2,
   "deadlines": [
-    {
-      "id": "task-38269",
-      "title": "Возникновение культуры мышления. Предмет и метод философии",
-      "course": "Философия 26/27 5 semester",
-      "due": "2026-11-21T18:33:33+05:00",
-      "url": "https://uib.academo.kz/study/course/90789/answer-task/38269"
-    },
     {
       "id": "task-51642",
       "title": "GUI",

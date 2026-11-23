@@ -2,7 +2,6 @@
   "known": [
     "quiz-7413",
     "quiz-7414",
-    "task-38269",
     "task-38270",
     "task-38271",
     "task-38272",
@@ -24,11 +23,8 @@
     "task-52317"
   ],
   "reminded": [
-    "task-38269",
     "task-51642"
   ],
   "overdue_watch": {},
-  "overdue_sent": [
-    "task-38269"
-  ]
+  "overdue_sent": []
 }
