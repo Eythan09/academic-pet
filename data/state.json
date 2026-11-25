@@ -24,8 +24,8 @@
   "reminded": [
     "task-38272"
   ],
-  "overdue_watch": {
-    "task-38272": "2026-11-25T08:33:18+05:00"
-  },
-  "overdue_sent": []
+  "overdue_watch": {},
+  "overdue_sent": [
+    "task-38272"
+  ]
 }
