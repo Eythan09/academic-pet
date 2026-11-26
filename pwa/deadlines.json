@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-24T08:26:21+05:00",
+  "updated_at": "2026-11-27T01:03:34+05:00",
   "keep_days": 2,
   "deadlines": [
     {
@@ -15,6 +15,20 @@
       "course": "Философия 26/27 5 semester",
       "due": "2026-11-26T09:50:42+05:00",
       "url": "https://uib.academo.kz/study/course/90789/test-info/7413"
+    },
+    {
+      "id": "quiz-9799",
+      "title": "Тест 13",
+      "course": "Основы облачных технологий AWS 26/27 5 semester",
+      "due": "2026-11-27T14:00:00+05:00",
+      "url": "https://uib.academo.kz/study/course/90834/test-info/9799"
+    },
+    {
+      "id": "task-52713",
+      "title": "AWS Cloud Quest: Cloud Practitioner. Core Security Concepts. Задание 12",
+      "course": "Основы облачных технологий AWS 26/27 5 semester",
+      "due": "2026-11-27T23:59:59+05:00",
+      "url": "https://uib.academo.kz/study/course/90834/answer-task/52713"
     },
     {
       "id": "task-38274",
