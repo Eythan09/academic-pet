@@ -1,14 +1,7 @@
 {
-  "updated_at": "2026-11-27T16:56:51+05:00",
+  "updated_at": "2026-11-28T17:12:23+05:00",
   "keep_days": 2,
   "deadlines": [
-    {
-      "id": "quiz-7413",
-      "title": "Тест 13",
-      "course": "Философия 26/27 5 semester",
-      "due": "2026-11-26T09:50:42+05:00",
-      "url": "https://uib.academo.kz/study/course/90789/test-info/7413"
-    },
     {
       "id": "quiz-9799",
       "title": "Тест 13",
